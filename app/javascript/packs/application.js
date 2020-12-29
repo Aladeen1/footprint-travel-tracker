@@ -24,3 +24,4 @@ require("channels")
 
 import './autocomplete';
 import './handlingRegistration';
+import './mapChart';
