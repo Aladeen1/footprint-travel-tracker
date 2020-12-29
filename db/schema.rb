@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_003022) do
+ActiveRecord::Schema.define(version: 2020_12_29_085950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2020_12_29_003022) do
     t.decimal "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "airports_flights", id: false, force: :cascade do |t|
+    t.bigint "airport_id"
+    t.bigint "flight_id"
+    t.index ["airport_id"], name: "index_airports_flights_on_airport_id"
+    t.index ["flight_id"], name: "index_airports_flights_on_flight_id"
   end
 
   create_table "contest_registrations", force: :cascade do |t|

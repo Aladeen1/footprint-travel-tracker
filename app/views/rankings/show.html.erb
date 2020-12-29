@@ -24,6 +24,11 @@
 				<ul><%= user.total_distance %>km</ul>
 			</li>
 		<% end %>
+
+		<div id="chartdiv" style="height:500px;"></div>
+
+		<input id="flights" type="hidden" data-travels='<%= @airports.to_json.html_safe %>'>
+
 	</div>
 
 	<% if user_signed_in? && @user_status == 1 %>
