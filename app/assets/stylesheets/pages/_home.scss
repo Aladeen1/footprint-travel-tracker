@@ -1,0 +1,133 @@
+// Specific CSS for your home-page
+.main-container {
+	width: 80%;
+	margin: auto;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+
+	h1 {
+		text-align: center;
+		margin-top: 3rem;
+	}
+
+	h2 {
+		text-align: center;
+		margin: 1rem;
+	}
+
+	form {
+		display: flex;
+		width: 700px;
+		justify-content: space-between;
+		align-items: flex-end;
+	}
+
+	.form-container {
+		margin: 50px 0px;
+		display: flex;
+		justify-content: center;
+
+		input[type=text] {
+			width: 250px;
+		    padding: 15px;
+		    border-radius: 6px;
+		    border: solid 2px $light-gray;
+		    outline: none;
+
+		    &:focus {
+		    	border: solid 2px $light-blue;
+		    	transition: border 0.2s;
+		    }
+
+		}
+
+		#flight_repetition {
+			width: 60px;
+		}
+	}
+
+	.button-standard-link {
+		text-decoration: none;
+		background-color: $orange;
+		border-radius: 6px;
+		font-family: poppins;
+		font-weight: 500;
+		color: white;
+		padding: 10px;
+		width: 15%;
+    	text-align: center;
+    	margin: 20px;
+
+		&:hover {
+			color: white;
+			background-color: lighten($orange, 10%);
+		}
+
+		&:visited {
+			color: white;
+		}
+	}
+
+	p {
+		text-align: center;
+	}
+}
+
+.suggestion {
+
+	li {
+		min-width: 550px;
+		position: absolute;
+		list-style: none;
+		border: solid 1px $light-blue;
+    	border-radius: 6px;
+    	display: flex;
+    	flex-direction: column;
+    	justify-content: space-between;
+    	background-color: white;
+    	z-index: 1;
+	}
+
+	ul {
+		padding: 15px;
+		margin: 0px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: lighten($light-blue, 21%);
+		}
+	}
+
+	img {
+		height: 20px;
+		margin-right: 5px;
+	}
+}
+
+.suggestion__markup {
+	display: flex;
+
+	p {
+		margin: 0px;
+	}
+}
+
+
+.listes-trajets {
+	list-style: none;
+	display: flex;
+	width: 730px;
+	height: 70px;
+	justify-content: space-around;
+	align-items: center;
+	margin: 10px auto;
+	border-radius: 10px;
+	background-color: white;
+	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
+	ul {
+		margin: 0px;
+		padding: 15px;
+	}
+}

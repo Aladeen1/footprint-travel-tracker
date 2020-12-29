@@ -1,0 +1,58 @@
+<div id="search"></div>
+<div class="main-container">
+	<h2>Welcome, join contests by adding all your flights and then clicking here:</h2>
+	<% if user_signed_in? %>
+		<!-- <a id="welcome-contest" class="button-standard-link">Access contests</a> -->
+		<%= link_to 'Access contests', user_path(current_user), class: "button-standard-link" %>
+	<% end %>
+	<div class="form-container">
+
+
+	<!-- <select id="test-algo" multiple style="width: 300px;"></select> -->
+
+	<%= simple_form_for(@flight) do |f| %>
+	  
+		  
+		  	<div class="suggestion">
+			  <%= f.text_field :depart, placeholder: 'Depart', label:false %>
+			  <li id="depart__suggestion" style="display: none;">
+			  </li>
+	      	</div>
+  	  	
+	  		<div class="suggestion">
+			  <%= f.text_field :arrival, placeholder: 'Arrival', label:false %>
+			  <li id="arrival__suggestion" style="display: none;">
+			  </li>
+	      	</div>
+
+	      	<div class="suggestion">
+			  <%= f.text_field :repetition, placeholder: 'n°', label:false %>
+	      	</div>
+
+	      	<!-- <div class="checkbox-styled-input"><i style="display: block;" class="fas fa-check"></i></div> -->
+	  	
+	  	<%= f.hidden_field :distance %>
+	  	<%= f.button :submit, "Add flight", class: "button-standard" %>
+		<% end %>
+	</div>
+	<% if user_signed_in? && @flights.length != 0 %>
+		<% @flights.each do |flight| %>  
+			<li class="listes-trajets">
+				<ul><%= flight.depart %> - <%= flight.arrival %></ul>
+				<% if flight.repetition != nil && flight.repetition != 0 %>
+					<ul><%= (flight.distance.to_i * flight.repetition.to_i) %>Km</ul>
+				<% else %>
+					<ul><%= flight.distance %>Km</ul>
+				<% end %>
+				<div class="checkbox-styled-input"><%= flight.repetition %> x</div>
+				<%= link_to(flight, method: :delete) do %>
+					<i class="far fa-trash-alt"></i>
+				<% end %>
+			</li>
+		<% end %>
+	<% else %>
+		<p>No flights to be displayed</p>
+	<% end %>
+
+</div>
+

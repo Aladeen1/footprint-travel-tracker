@@ -1,0 +1,44 @@
+h2 {
+	text-align: center;
+	margin: 15px;
+}
+
+
+.main-div-user {
+
+	width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+	.div-user-user-action {
+
+    	a {
+    		text-align: center;
+    	}
+    	margin-top: 25px;
+        margin-left: 25px;
+	}
+
+	p {
+		margin: 0px;
+		margin-top: 5px;
+	}
+
+	.user-profile {
+		margin: 25px 0px;
+	}
+}
+
+.button-dropdown-orange {
+	width: 35px;
+    height: 35px;
+    background-color: $orange;
+    background-color: orange;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 50%;	
+}

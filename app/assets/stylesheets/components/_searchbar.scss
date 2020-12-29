@@ -1,0 +1,35 @@
+.button-standard {
+	background-color: $orange;
+	border-radius: 6px;
+	font-family: poppins;
+	font-weight: 500;
+	color: white;
+	padding: 10px 15px;
+
+	&:hover {
+		color: white;
+		background-color: lighten($orange, 10%);
+	}
+}
+
+.no-airport-list {
+	min-width:500px;
+	padding:10px;
+}
+
+.checkbox-styled-input {
+	width: 50px;
+	border: solid 1px $light-blue;
+	border-radius: 6px;
+	background-color: white;
+	text-align: center;
+	font-size: 17px;
+	font-weight: 300;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+
+	&:hover {
+		cursor: pointer;
+	}
+}

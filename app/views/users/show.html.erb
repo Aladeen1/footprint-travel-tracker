@@ -1,0 +1,26 @@
+<h2 class="user-title">Welcome to your profile</h2>
+<div class="main-div-user">
+
+	<li class="listes-trajets user-profile">
+		<ul><%= @carbon.round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></ul>
+		<ul><%= @distance %>km</ul>
+		<div class="button-dropdown-orange"><i class="fas fa-arrow-down"></i></div>
+	</li>
+
+	<div class="div-user-user-action">
+		<%= link_to new_flight_path do %>
+		<i class="fas fa-plane"></i> Add flights to my profile
+		<% end %></br>
+		<%= link_to new_ranking_path do %>
+		<i class="fas fa-plus-square"></i> Create new contest
+		<% end %></br>
+		
+		<p>Your contests:</p>
+		<% @user.rankings.each do |ranking| %>
+			<%= link_to ranking_path(ranking.id) do %>
+			<i class="fas fa-crown"></i> <%= ranking.name %></br>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+

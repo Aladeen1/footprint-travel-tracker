@@ -1,0 +1,53 @@
+<div id="ranking_page"></div>
+<div class="intro-div-ranking">
+	<h3>The contest you don't want to win</h3>
+	<h3 class="title-ranking"><%= @ranking.name %> contest</h3>
+	<p>Invite your friends to participate in this contest by just sending them this link:</p>
+	<%= link_to ranking_path(@ranking.id) %>
+	<% if !user_signed_in? || @user_status != 1 %>
+		<%= simple_form_for(@contestRegistration) do |f| %>
+			<%= f.hidden_field :ranking_id %>
+			<%= f.button :submit, "Participate", class: "button-standard", id: "participation-target" %>
+		<% end %>
+	<% end %>
+</div>
+
+
+<div class="main-div-ranking">
+
+	<div>
+		<% @user_list.each_with_index do |user, index| %>
+			<li class="listes-trajets">
+				<ul><%= index + 1 %></ul>
+				<ul><%= user.email %></ul>
+				<ul><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></ul>
+				<ul><%= user.total_distance %>km</ul>
+			</li>
+		<% end %>
+	</div>
+
+	<% if user_signed_in? && @user_status == 1 %>
+		<div class="div-ranking-user-action">
+
+		<%= link_to new_ranking_path do %>
+			<i class="fas fa-plus-square"></i> Create new contest
+		<% end %></br>
+		<%= link_to new_flight_path do %>
+			<i class="fas fa-plane"></i> Add flights to my profile
+		<% end %></br>
+		<%= link_to user_path(@user) do %>
+			<i class="fas fa-user-circle"></i> Go to my profile
+		<% end %></br>
+		<%= link_to(contest_registration_path(@contestRegistration), method: :delete, data: {confirm: "Are you sure?"})  do %>
+			<i class="fas fa-minus-circle"></i> Quit this contest
+		<% end %>
+		<p>Your contests:</p>
+			<% @user.rankings.each do |ranking| %>
+				<%= link_to ranking_path(ranking.id) do %>
+					<i class="fas fa-crown"></i> <%= ranking.name %></br>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	
+</div>

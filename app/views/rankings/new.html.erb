@@ -1,0 +1,12 @@
+
+<div class="main-div-ranking new-ranking">
+	<h3>Give a name to your contest and start inviting people!</h3>
+	<%= simple_form_for(@ranking) do |f| %>
+		  
+	  <%= f.label :name %>
+	  	<div class="suggestion">
+		  <%= f.text_field :name %>
+	  	</div>
+		<%= f.button :submit, "Create contest", class: "button-standard" %>
+	<% end %>
+</div>
