@@ -28,8 +28,7 @@ class RankingsController < ApplicationController
 			@user_status = 1
 		end
 		@user_list = @ranking.users.sort_by {|user| user.total_distance}.reverse
-		@airports = User.select(:flight_id, :longitude, :latitude).joins(flights: :airports).group(:flight_id, :longitude, :latitude)
-		# rank in descending order the different users in the ranking by their total_distance
+		@airports = Flight.select("flights.id as flight_id", :longitude, :latitude).joins("INNER JOIN airports ON (flights.iata_departure = airports.iata_code OR flights.iata_arrival = airports.iata_code)")
 	end
 
 	private

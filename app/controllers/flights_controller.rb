@@ -24,8 +24,9 @@ class FlightsController < ApplicationController
 	def create
 		@flight = Flight.new(flight_params)
 		@flight.user = current_user
-    	@flight.save!
-    	redirect_to new_flight_path
+		@flight.save!
+
+		redirect_to new_flight_path
   	end
 
   	def destroy
@@ -38,7 +39,7 @@ class FlightsController < ApplicationController
   	private
 
   	def flight_params
-  	  params.require(:flight).permit(:depart, :arrival, :distance, :repetition)
+  	  params.require(:flight).permit(:depart, :arrival, :distance, :repetition, :iata_departure, :iata_arrival)
   	end
 	
 end

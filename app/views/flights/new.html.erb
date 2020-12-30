@@ -32,6 +32,9 @@
 	      	<!-- <div class="checkbox-styled-input"><i style="display: block;" class="fas fa-check"></i></div> -->
 	  	
 	  	<%= f.hidden_field :distance %>
+	  	<%= f.hidden_field :iata_departure %>
+	  	<%= f.hidden_field :iata_arrival %>
+
 	  	<%= f.button :submit, "Add flight", class: "button-standard" %>
 		<% end %>
 	</div>

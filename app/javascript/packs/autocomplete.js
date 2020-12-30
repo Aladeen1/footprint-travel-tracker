@@ -62,9 +62,11 @@ function renderSelection(id, input, airport, type){
 		if (type === 'depart__suggestion') {
 			locationCoordinates.splice(0, 1, geoloc);
 			calculateDistance(locationCoordinates)
+			document.getElementById("flight_iata_departure").value = airport.iata_code;
 		} else if (type === 'arrival__suggestion') {
 			locationCoordinates.splice(1, 1, geoloc);
 			calculateDistance(locationCoordinates)
+			document.getElementById("flight_iata_arrival").value = airport.iata_code;
 		}
 	})
 }
@@ -106,7 +108,6 @@ function boxDisappear(input, type) {
 
 function createAutocomplete(input, type) {
 	let result;
-	console.log("creating input")
 	boxDisappear(input, type)
 	new autoComplete({
 	    selector: input,
