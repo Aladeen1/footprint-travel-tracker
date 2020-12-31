@@ -10,6 +10,8 @@ if(document.getElementById("chartdiv")) {
 
   let flightsJSON = JSON.parse(flightsRaw.dataset.travels);
 
+  console.log(flightsJSON);
+
   let flightsPoints = flightsJSON.map(e => {
     return {longitude: parseInt(e.longitude), latitude: parseInt(e.latitude), city: e.city }
   });
@@ -55,6 +57,8 @@ if(document.getElementById("chartdiv")) {
   circle.stroke = am4core.color("#FFFFFF");
   circle.strokeWidth = 3;
   circle.nonScaling = true;
+  circle.tooltipText = "{city}";
+
 
   // Set property fields
   imageSeriesTemplate.propertyFields.latitude = "latitude";
