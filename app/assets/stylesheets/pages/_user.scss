@@ -6,6 +6,12 @@ h2 {
 
 .main-div-user {
 
+	a {
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
 	width: 1100px;
     margin: auto;
     display: flex;
@@ -14,7 +20,7 @@ h2 {
 	.div-user-user-action {
 
     	a {
-    		text-align: center;
+			text-align: center;
     	}
     	margin-top: 25px;
         margin-left: 25px;
