@@ -6,12 +6,6 @@ h2 {
 
 .main-div-user {
 
-	a {
-		&:hover {
-			text-decoration: none;
-		}
-	}
-
 	width: 1100px;
     margin: auto;
     display: flex;
@@ -46,5 +40,40 @@ h2 {
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 50%;	
+	border-radius: 50%;	
+	border-width: 0px;
+}
+
+ .fa-arrow-down-animated {
+    animation-name: collapse-icon-animation;
+    animation-duration: 0.15s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+
+.fa-arrow-up-animated {
+    animation-name: collapse-icon-animation-reverse;
+    animation-duration: 0.25s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+
+@keyframes collapse-icon-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes collapse-icon-animation-reverse {
+    0% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }

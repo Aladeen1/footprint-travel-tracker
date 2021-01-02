@@ -1,11 +1,23 @@
 <h2 class="user-title">Welcome to your profile</h2>
 <div class="main-div-user">
 
-	<li class="listes-trajets user-profile">
-		<ul><%= @carbon.round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></ul>
-		<ul><%= @distance %>km</ul>
-		<div class="button-dropdown-orange"><i class="fas fa-arrow-down"></i></div>
-	</li>
+	<div class="bg-white border border-white m-0 py-2 h-100" style="border-radius: 10px;">
+		<ul class="listes-trajets user-profile border border-white m-0" style="border-radius: 10px;">
+			<li><%= @carbon.round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
+			<li><%= @distance %>km</li>
+			<li><button data-toggle="collapse" data-target="#collapseMap" aria-expanded="true" id="dropdownBtn" class="button-dropdown-orange"  ><i id="collapseIcon" class="fas fa-arrow-down fa-arrow-down-animated"></i></button></li>
+		</ul>
+
+			
+		<div class="collapse show p-4" id="collapseMap">
+			<div id="chartdiv" style="height:400px; !important"></div>	
+		</div>
+	</div>
+
+
+
+	<input id="flights" type="hidden" data-travels='<%= @airports.to_json.html_safe %>'>
+
 
 	<div class="div-user-user-action">
 		<%= link_to new_flight_path do %>

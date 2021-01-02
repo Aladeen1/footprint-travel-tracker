@@ -101,7 +101,7 @@ if (document.getElementById("chartdiv")) {
   });
 
   var planeImage = plane.createChild(am4core.Sprite);
-  planeImage.scale = 0.12;
+  planeImage.scale = 0.18;
   planeImage.horizontalCenter = "middle";
   planeImage.verticalCenter = "middle";
   planeImage.path =
@@ -115,7 +115,7 @@ if (document.getElementById("chartdiv")) {
   shadowPlane.height = 48;
 
   var shadowPlaneImage = shadowPlane.createChild(am4core.Sprite);
-  shadowPlaneImage.scale = 0.08;
+  shadowPlaneImage.scale = 0.12;
   shadowPlaneImage.horizontalCenter = "middle";
   shadowPlaneImage.verticalCenter = "middle";
   shadowPlaneImage.path =
@@ -200,6 +200,12 @@ if (document.getElementById("chartdiv")) {
     }
   }
 
-  // Go!
-  flyPlane();
+  $(function () {
+    // We make the plane fly when window is loaded
+    flyPlane();
+    
+    $("#dropdownBtn").on("click", function () {
+      $("#collapseIcon").toggleClass("fa-arrow-up-animated");
+    });
+  });
 }
