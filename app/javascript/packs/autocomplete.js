@@ -97,7 +97,7 @@ function renderSuggestion(data, input, type) {
 function boxDisappear(input, type) {
 	const box = document.getElementById(type);
 	document.addEventListener('click', (target) => {
-		if (box !== event.target && !box.contains(event.target)) {
+		if (box && !box.contains(event.target)) {
 			 document.getElementById(type).style.display = "none";
 		}
 	})
@@ -129,10 +129,9 @@ function createAutocomplete(input, type) {
 
 // Listening to load event to see if we are on search page so we can create the autocomplete fields. 
 
-window.addEventListener('load', () => {
-	if (document.getElementById('search')) {
-		createAutocomplete(departInput, 'depart__suggestion');
-		createAutocomplete(arriveeInput, 'arrival__suggestion');
-	}
-})
+
+if (document.getElementById('search')) {
+	createAutocomplete(departInput, 'depart__suggestion');
+	createAutocomplete(arriveeInput, 'arrival__suggestion');
+}
 
