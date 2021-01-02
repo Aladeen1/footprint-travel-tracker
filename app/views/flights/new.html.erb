@@ -40,18 +40,18 @@
 	</div>
 	<% if user_signed_in? && @flights.length != 0 %>
 		<% @flights.each do |flight| %>  
-			<li class="listes-trajets">
-				<ul><%= flight.depart %> - <%= flight.arrival %></ul>
+			<ul class="listes-trajets">
+				<li><%= flight.depart %> - <%= flight.arrival %></li>
 				<% if flight.repetition != nil && flight.repetition != 0 %>
-					<ul><%= (flight.distance.to_i * flight.repetition.to_i) %>Km</ul>
+					<li><%= (flight.distance.to_i * flight.repetition.to_i) %>Km</li>
 				<% else %>
-					<ul><%= flight.distance %>Km</ul>
+					<li><%= flight.distance %>Km</li>
 				<% end %>
 				<div class="checkbox-styled-input"><%= flight.repetition %> x</div>
 				<%= link_to(flight, method: :delete) do %>
 					<i class="far fa-trash-alt"></i>
 				<% end %>
-			</li>
+			</ul>
 		<% end %>
 	<% else %>
 		<p>No flights to be displayed</p>

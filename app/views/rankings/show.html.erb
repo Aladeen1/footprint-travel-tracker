@@ -17,12 +17,12 @@
 
 	<div>
 		<% @user_list.each_with_index do |user, index| %>
-			<li class="listes-trajets">
-				<ul><%= index + 1 %></ul>
-				<ul><%= user.email %></ul>
-				<ul><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></ul>
-				<ul><%= user.total_distance %>km</ul>
-			</li>
+			<ul class="listes-trajets">
+				<li><%= index + 1 %></li>
+				<li><%= user.email %></li>
+				<li><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
+				<li><%= user.total_distance %>km</li>
+			</ul>
 		<% end %>
 
 	</div>
