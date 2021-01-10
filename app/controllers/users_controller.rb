@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
-		@user = User.find(current_user.id)
+		# policies = policy_scope(User)
+		@user = User.find(params[:id])
 		@flights = @user.flights
 
 		@distance = 0
