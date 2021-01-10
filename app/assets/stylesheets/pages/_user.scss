@@ -3,6 +3,43 @@ h2 {
 	margin: 15px;
 }
 
+.div-user-user-action {
+
+    a {
+        text-align: center;
+        padding: 8px 10px;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+
+
+        &:hover {
+            background-color: lighten($orange, 40%);
+        }
+
+        &:visited {
+            color: auto;
+        }
+    }
+
+    a:first-child {
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    a:last-child {
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    p {
+        margin: 0px;
+        text-align: center;
+    }
+
+
+}
+
+
 
 .main-div-user {
 
@@ -10,20 +47,6 @@ h2 {
     margin: auto;
     display: flex;
     justify-content: center;
-
-	.div-user-user-action {
-
-    	a {
-			text-align: center;
-    	}
-    	margin-top: 25px;
-        margin-left: 25px;
-	}
-
-	p {
-		margin: 0px;
-		margin-top: 5px;
-	}
 
 	.user-profile {
 		margin: 25px 0px;
@@ -34,7 +57,6 @@ h2 {
 	width: 35px;
     height: 35px;
     background-color: $orange;
-    background-color: orange;
     text-align: center;
     display: flex;
     align-items: center;

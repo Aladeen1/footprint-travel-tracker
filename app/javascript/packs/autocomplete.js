@@ -2,6 +2,7 @@ import axios from 'axios';
 import 'js-autocomplete/auto-complete.css';
 import autoComplete from 'js-autocomplete';
 import $ from "jquery";
+import { validateForm } from './validations';
 
 const proxy = 'https://cors-anywhere.herokuapp.com/';
    
@@ -9,7 +10,11 @@ var xhr;
 
 const departInput = document.getElementById('flight_depart');
 const arriveeInput = document.getElementById('flight_arrival');
+const repetitionInput = document.getElementById('flight_repetition');
+const form = document.getElementById('new_flight');
 let locationCoordinates = [];
+
+
 
 // Function calculating the distance between two points using geolocation coordinates
 
@@ -97,14 +102,14 @@ function renderSuggestion(data, input, type) {
 function boxDisappear(input, type) {
 	const box = document.getElementById(type);
 	document.addEventListener('click', (target) => {
-		if (box && !box.contains(event.target)) {
+		if (box && !box.contains(event.target) && document.getElementById('search')) {
 			 document.getElementById(type).style.display = "none";
 		}
 	})
 }
 
 // Function creating the autocomplete field using autocomplete.js library, it's a lightweight library from unsplash.
-// It doesn't work fully anymore because of Jquery and maintainance problem I think so I found a work around and it works well.
+// It doesn't work fully anymore because of Jquery and maintainance problem I think, so I found a work around.
 
 function createAutocomplete(input, type) {
 	let result;
@@ -129,9 +134,35 @@ function createAutocomplete(input, type) {
 
 // Listening to load event to see if we are on search page so we can create the autocomplete fields. 
 
+window.addEventListener('load', () => {
+	if (document.getElementById('search')) {
+		console.log("here")
+		createAutocomplete(departInput, 'depart__suggestion');
+		createAutocomplete(arriveeInput, 'arrival__suggestion');
+		validateForm(form);
+	} else {
+		console.log("not here")
+	}
+})
 
-if (document.getElementById('search')) {
-	createAutocomplete(departInput, 'depart__suggestion');
-	createAutocomplete(arriveeInput, 'arrival__suggestion');
-}
+// document.addEventListener("turbolinks:load", function(event) {
+	
+//   	if (document.getElementById('search')) {
+// 		console.log("here")
+// 		createAutocomplete(departInput, 'depart__suggestion');
+// 	    createAutocomplete(arriveeInput, 'arrival__suggestion');
+// 	} else {
+// 		console.log("not here")
+// 	}
+// })
+
+// document.addEventListener("DOMContentLoaded", () => {
+// 	console.log("contentloaded")
+// })
+
+
+
+
+
+
 

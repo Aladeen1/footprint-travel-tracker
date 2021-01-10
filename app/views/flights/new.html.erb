@@ -1,4 +1,3 @@
-<%= javascript_pack_tag "autocomplete" %>
 
 <div id="search"></div>
 <div class="main-container">
@@ -14,40 +13,46 @@
 
 	<%= simple_form_for(@flight) do |f| %>
 	  
-		  
-		  	<div class="suggestion">
-			  <%= f.text_field :depart, placeholder: 'Departure', label:false %>
-			  <li id="depart__suggestion" style="display: none;">
-			  </li>
-	      	</div>
-  	  	
-	  		<div class="suggestion">
-			  <%= f.text_field :arrival, placeholder: 'Arrival', label:false %>
-			  <li id="arrival__suggestion" style="display: none;">
-			  </li>
-	      	</div>
+		  	<div class="form-input-div">
+		  		<div class="form-input-container">
+				  	<div class="suggestion">
+				  		<%= f.label :depart, 'Depart airport:' %>
+					 	<%= f.text_field :depart, placeholder: 'Beijing, PEK' %>
+					  <li id="depart__suggestion" style="display: none;"></li>
+			      	</div>
+		  	  	
+			  		<div class="suggestion">
+			  			<%= f.label :arrival, 'Arrival airport:' %>
+					  	<%= f.text_field :arrival, placeholder: 'New york, JFK' %>
+					  	<li id="arrival__suggestion" style="display: none;"></li>
+			      	</div>
 
-	      	<div class="suggestion">
-			  <%= f.text_field :repetition, placeholder: 'n°', label:false %>
+			      	<div class="suggestion">
+			      		<%= f.label :repetition, 'Repetition:' %>
+					  	<%= f.text_field :repetition, placeholder: '4' %>
+			      	</div>
+
+			      	<%= f.hidden_field :distance %>
+	  				<%= f.hidden_field :iata_departure %>
+	  				<%= f.hidden_field :iata_arrival %>
+
+	  				<%= f.button :submit, "Add flight", class: "button-standard" %>
+		      	</div>
+		      	<p id="error-signal">Airports need to be selected from the suggestions list showing when typing in the input field.</br> Repetition is the number of flight from one airport to the other (E.g. For a round-way put 2).</p>
 	      	</div>
 
 	      	<!-- <div class="checkbox-styled-input"><i style="display: block;" class="fas fa-check"></i></div> -->
 	  	
-	  	<%= f.hidden_field :distance %>
-	  	<%= f.hidden_field :iata_departure %>
-	  	<%= f.hidden_field :iata_arrival %>
-
-	  	<%= f.button :submit, "Add flight", class: "button-standard" %>
 		<% end %>
 	</div>
 	<% if user_signed_in? && @flights.length != 0 %>
 		<% @flights.each do |flight| %>  
 			<ul class="listes-trajets">
-				<li><%= flight.depart %> - <%= flight.arrival %></li>
+				<li class="inlist-airport-display"><%= flight.depart %> - <%= flight.arrival %></li>
 				<% if flight.repetition != nil && flight.repetition != 0 %>
-					<li><%= (flight.distance.to_i * flight.repetition.to_i) %>Km</li>
+					<li class="inlist-stat-display"><%= (flight.distance.to_i * flight.repetition.to_i) %> Km</li>
 				<% else %>
-					<li><%= flight.distance %>Km</li>
+					<li class="inlist-stat-display"><%= flight.distance %> Km</li>
 				<% end %>
 				<div class="checkbox-styled-input"><%= flight.repetition %> x</div>
 				<%= link_to(flight, method: :delete) do %>
