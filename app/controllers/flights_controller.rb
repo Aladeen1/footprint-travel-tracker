@@ -1,4 +1,5 @@
 class FlightsController < ApplicationController
+	before_action :authenticate_user!
 	def new
 		
 		@flight = Flight.new
