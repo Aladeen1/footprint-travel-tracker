@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 		@user.total_distance = @distance
 		@user.save!
 
-		@airports = Flight.select("flights.id as flight_id", :city, :longitude, :latitude).joins("INNER JOIN airports ON (flights.iata_departure = airports.iata_code OR flights.iata_arrival = airports.iata_code)").where(user_id: current_user.id).order("flight_id ASC")
+		@airports = Flight.select("flights.id as flight_id", :city, :longitude, :latitude).joins("INNER JOIN airports ON (flights.iata_departure = airports.iata_code OR flights.iata_arrival = airports.iata_code)").where(user_id: @user.id).order("flight_id ASC")
 
 	end
 end
