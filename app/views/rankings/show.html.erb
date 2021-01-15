@@ -5,7 +5,10 @@
 	<p>Invite your friends to participate in this contest by just sending them this link:</p>
 	<%= link_to ranking_path(@ranking.id) %>
 	<% if !user_signed_in? || @user_status != 1 %>
+		<!-- <input type="text" id="partipant-verification" placeholder="Enter verification code"> -->
+	
 		<%= simple_form_for(@contestRegistration) do |f| %>
+  			<%= f.input :verification, as: :fake, label: 'Enter verification code:'%>
 			<%= f.hidden_field :ranking_id %>
 			<%= f.button :submit, "Participate", class: "button-standard", id: "participation-target" %>
 		<% end %>
@@ -14,7 +17,6 @@
 
 
 <div class="main-div-ranking">
-
 	<div>
 		<% @user_list.each_with_index do |user, index| %>
 			<%= link_to user_path(user) do %>

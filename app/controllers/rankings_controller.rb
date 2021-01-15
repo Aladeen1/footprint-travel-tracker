@@ -6,6 +6,7 @@ class RankingsController < ApplicationController
 
 	def create
 		@ranking = Ranking.new(ranking_params)
+		@ranking.verification = rand(100000..999999)
 		@ranking.save!
 
 		@contestRegistration = ContestRegistration.new
