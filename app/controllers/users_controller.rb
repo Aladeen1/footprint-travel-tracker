@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
 		# policies = policy_scope(User)
+		@rankings = Ranking.all
 		@user = User.find(params[:id])
 		@flights = @user.flights
 

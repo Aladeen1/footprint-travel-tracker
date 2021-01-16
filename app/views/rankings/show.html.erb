@@ -33,24 +33,42 @@
 	<% if user_signed_in? && @user_status == 1 %>
 		<div class="div-user-user-action">
 
-		<%= link_to new_ranking_path do %>
-			<i class="fas fa-plus-square"></i> Create new contest
-		<% end %></br>
-		<%= link_to new_flight_path do %>
-			<i class="fas fa-plane"></i> Add flights to my profile
-		<% end %></br>
-		<%= link_to user_path(@user) do %>
-			<i class="fas fa-user-circle"></i> Go to my profile
-		<% end %></br>
-		<%= link_to(contest_registration_path(@contestRegistration), method: :delete, data: {confirm: "Are you sure?"})  do %>
-			<i class="fas fa-minus-circle"></i> Quit this contest
-		<% end %>
-		<p>Your contests:</p>
+			<p class="menu">Menu</p>
+
+			<%= link_to new_ranking_path do %>
+				<i class="fas fa-plus-square"></i> Create new contest
+			<% end %></br>
+			<%= link_to new_flight_path do %>
+				<i class="fas fa-plane"></i> Add flights to my profile
+			<% end %></br>
+			<%= link_to user_path(@user) do %>
+				<i class="fas fa-user-circle"></i> Go to my profile
+			<% end %></br>
+			<%= link_to(contest_registration_path(@contestRegistration), method: :delete, data: {confirm: "Are you sure?"})  do %>
+				<i class="fas fa-minus-circle"></i> Quit this contest
+			<% end %>
+			
+			<div data-toggle="collapse" data-target="#collapseMyContests" aria-expanded="true"  class="title-menu">
+				<p>Your contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+			</div>
+			<div id="collapseMyContests">
 			<% @user.rankings.each do |ranking| %>
 				<%= link_to ranking_path(ranking.id) do %>
-					<i class="fas fa-crown"></i> <%= ranking.name %></br>
+				<i class="fas fa-crown"></i> <%= ranking.name %></br>
 				<% end %>
 			<% end %>
+			</div>
+
+			<div data-toggle="collapse" data-target="#collapseAllContests" aria-expanded="true"  class="title-menu">
+				<p>All contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+			</div>
+			<div id="collapseAllContests">
+			<% @rankings.each do |ranking| %>
+				<%= link_to ranking_path(ranking.id) do %>
+				<i class="fas fa-crown"></i> <%= ranking.name %></br>
+				<% end %>
+			<% end %>
+			</div>
 		</div>
 	<% end %>
 </div>

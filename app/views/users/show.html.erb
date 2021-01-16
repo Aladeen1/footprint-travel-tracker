@@ -22,19 +22,38 @@
 
 
 	<div class="div-user-user-action">
+
+		<p class="menu">Menu</p>
+
+
 		<%= link_to new_flight_path do %>
-		<i class="fas fa-plane"></i> Add flights to my profile
+		<i class="fas fa-plane"></i>   Add flights to my profile
 		<% end %></br>
 		<%= link_to new_ranking_path do %>
-		<i class="fas fa-plus-square"></i> Create new contest
+		<i class="fas fa-plus-square"></i>   Create new contest
 		<% end %></br>
 		
-		<p>Your contests:</p>
+		<div data-toggle="collapse" data-target="#collapseMyContests" aria-expanded="true"  class="title-menu">
+			<p>Your contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+		</div>
+		<div id="collapseMyContests">
 		<% @user.rankings.each do |ranking| %>
 			<%= link_to ranking_path(ranking.id) do %>
 			<i class="fas fa-crown"></i> <%= ranking.name %></br>
 			<% end %>
 		<% end %>
+		</div>
+
+		<div data-toggle="collapse" data-target="#collapseAllContests" aria-expanded="true"  class="title-menu">
+			<p>All contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+		</div>
+		<div id="collapseAllContests">
+		<% @rankings.each do |ranking| %>
+			<%= link_to ranking_path(ranking.id) do %>
+			<i class="fas fa-crown"></i> <%= ranking.name %></br>
+			<% end %>
+		<% end %>
+		</div>
 	</div>
 </div>
 

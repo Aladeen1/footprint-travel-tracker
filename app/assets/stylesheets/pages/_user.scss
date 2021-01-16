@@ -1,17 +1,30 @@
 h2 {
 	text-align: center;
 	margin: 15px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $title-color;
 }
 
 .div-user-user-action {
 
+    background-color: white;
+    border-radius: 10px;
+    height: 535px;
+    margin-left: 30px;
+    width: 270px;
+
     a {
         text-align: center;
-        padding: 8px 10px;
+        padding: 12px;
+        line-height: 140%;
+        color: $text-color;
         text-decoration: none;
         display: inline-block;
         width: 100%;
         text-align: left;
+        font-weight: 300;
+        font-size: 15px;
 
 
         &:hover {
@@ -23,19 +36,32 @@ h2 {
         }
     }
 
-    a:first-child {
-        border-radius: 10px 10px 0px 0px;
-    }
-
-    a:last-child {
-        border-radius: 0px 0px 10px 10px;
-    }
-
     p {
         margin: 0px;
         text-align: center;
     }
 
+    .menu {
+        font-weight: 600;
+        font-size: 19px;
+        padding: 8px;
+        color: $title-color;
+    }
+
+    .title-menu {
+        padding: 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: 500;
+
+    }
+
+    #collapseAllContests {
+        overflow: scroll;
+        height: 135px;
+    }
 
 }
 

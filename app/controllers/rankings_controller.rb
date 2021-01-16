@@ -18,6 +18,7 @@ class RankingsController < ApplicationController
 	end
 
 	def show
+		@rankings = Ranking.all
 		@user = current_user
 		@contestRegistration = ContestRegistration.new
 		@ranking = Ranking.find(params[:id])
