@@ -34,7 +34,7 @@
 		<% end %></br>
 		
 		<div data-toggle="collapse" data-target="#collapseMyContests" aria-expanded="true"  class="title-menu">
-			<p>Your contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+			<p>My contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
 		</div>
 		<div id="collapseMyContests">
 		<% @user.rankings.each do |ranking| %>
@@ -45,7 +45,7 @@
 		</div>
 
 		<div data-toggle="collapse" data-target="#collapseAllContests" aria-expanded="true"  class="title-menu">
-			<p>All contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+			<p>Find contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
 		</div>
 		<div id="collapseAllContests">
 		<% @rankings.each do |ranking| %>

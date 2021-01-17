@@ -28,8 +28,8 @@ function validateRepetition(){
 }
 
 function validateDistance() {
-	let valid;
-	let distance = document.getElementById('flight_distance');
+	let valid, distance;
+	distance = document.getElementById('flight_distance');
 	if (distance.value >= 1) {
 		valid = true
 	} else {

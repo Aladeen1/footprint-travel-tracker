@@ -2,11 +2,14 @@
 <div class="intro-div-ranking">
 	<h3>The contest you don't want to win</h3>
 	<h3 class="title-ranking"><%= @ranking.name %> contest</h3>
-	<p>Invite your friends to participate in this contest by just sending them this link:</p>
-	<%= link_to ranking_path(@ranking.id) %>
-	<% if !user_signed_in? || @user_status != 1 %>
-		<!-- <input type="text" id="partipant-verification" placeholder="Enter verification code"> -->
 	
+	<% if user_signed_in? && @user_status == 1 %>
+		<p>Invite your friends to participate in this contest by just sending them this link and the identification code:</p>
+		<p class="text-to-share">
+			<%= request.original_url %></br>
+			Code: <%= @ranking.verification %>
+		</p>
+	<% elsif !user_signed_in? || @user_status != 1 %>
 		<%= simple_form_for(@contestRegistration) do |f| %>
   			<%= f.input :verification, as: :fake, label: 'Enter verification code:'%>
 			<%= f.hidden_field :ranking_id %>
@@ -17,20 +20,27 @@
 
 
 <div class="main-div-ranking">
-	<div>
-		<% @user_list.each_with_index do |user, index| %>
-			<%= link_to user_path(user) do %>
-				<ul class="listes-trajets">
-					<li><%= index + 1 %></li>
-					<li><%= user.email %></li>
-					<li><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
-					<li><%= user.total_distance %>km</li>
-				</ul>
-			<% end %>
-		<% end %>
-	</div>
 
 	<% if user_signed_in? && @user_status == 1 %>
+
+		<div>
+			<% @user_list.each_with_index do |user, index| %>
+				<%= link_to user_path(user) do %>
+					<ul class="listes-trajets click-trajet">
+						<li><% if index == 0 %>
+								<i class="fas fa-crown" style></i>
+							<% end %>
+							<%= index + 1 %>
+						</li>
+						<li><%= user.name %></li>
+						<li><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
+						<li><%= user.total_distance %>km</li>
+						<li><i class="fas fa-user-circle styling-icon"></i></li>
+					</ul>
+				<% end %>
+			<% end %>
+		</div>
+		
 		<div class="div-user-user-action">
 
 			<p class="menu">Menu</p>
@@ -49,7 +59,7 @@
 			<% end %>
 			
 			<div data-toggle="collapse" data-target="#collapseMyContests" aria-expanded="true"  class="title-menu">
-				<p>Your contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+				<p>My contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
 			</div>
 			<div id="collapseMyContests">
 			<% @user.rankings.each do |ranking| %>
@@ -60,7 +70,7 @@
 			</div>
 
 			<div data-toggle="collapse" data-target="#collapseAllContests" aria-expanded="true"  class="title-menu">
-				<p>All contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
+				<p>Find contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
 			</div>
 			<div id="collapseAllContests">
 			<% @rankings.each do |ranking| %>

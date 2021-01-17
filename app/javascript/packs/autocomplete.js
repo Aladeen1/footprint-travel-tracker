@@ -12,7 +12,8 @@ const departInput = document.getElementById('flight_depart');
 const arriveeInput = document.getElementById('flight_arrival');
 const repetitionInput = document.getElementById('flight_repetition');
 const form = document.getElementById('new_flight');
-let locationCoordinates = [];
+let departureCoordinates = [];
+let arrivalCoordinates = [];
 
 
 
@@ -43,18 +44,17 @@ function distanceFlight(lat1, lon1, lat2, lon2, unit) {
 
 
 // Function setting the value for the distance between two airports in an hidden input field.
-function calculateDistance(coordinates) {
+function calculateDistance(departureCoordinates, arrivalCoordinates) {
 	let distance = document.getElementById('flight_distance');
-	if (coordinates.length == 2) {
-		distance.value = distanceFlight(coordinates[0][0], coordinates[0][1], coordinates[1][0], coordinates[1][1], 'K' )
-		// Premier [0] c'est allé(0) ou retour(1) et deuxième c'est latitude(0) ou longitude(1)
-	}
+	distance.value = distanceFlight(departureCoordinates[0][0], departureCoordinates[0][1], arrivalCoordinates[0][0], arrivalCoordinates[0][1], 'K' )
+	// 0 is the latitude and 1 the longitude for each coordinates.
 }
 
 // Function rendering the airport in the input field once it has been selected from the suggestion.
 // Once two airports have been selected the distance is filled up in the hidden input. 
 
 function renderSelection(id, input, airport, type){
+	
 	const element = document.getElementById(id);
 	element.addEventListener('click', () => {
 		const code = airport.iata_code;
@@ -64,15 +64,17 @@ function renderSelection(id, input, airport, type){
 
 		let geoloc = [airport.latitude, airport.longitude];
 		
-		if (type === 'depart__suggestion') {
-			locationCoordinates.splice(0, 1, geoloc);
-			calculateDistance(locationCoordinates)
+		if (type === 'depart__suggestion' && geoloc) {
+			departureCoordinates.splice(0, 1, geoloc);
 			document.getElementById("flight_iata_departure").value = airport.iata_code;
-		} else if (type === 'arrival__suggestion') {
-			locationCoordinates.splice(1, 1, geoloc);
-			calculateDistance(locationCoordinates)
+		} else if (type === 'arrival__suggestion' && geoloc) {
+			arrivalCoordinates.splice(0, 1, geoloc);
 			document.getElementById("flight_iata_arrival").value = airport.iata_code;
 		}
+
+		if ((departureCoordinates.length == 1) && (arrivalCoordinates.length == 1)) {
+			calculateDistance(departureCoordinates, arrivalCoordinates)
+		} 
 	})
 }
 
