@@ -1,7 +1,6 @@
-
 <div id="search"></div>
 <div class="main-container">
-	<h2>Welcome, join contests by adding all your flights, then click here:</h2>
+	<h2 class="title-style">Welcome, join contests by adding all your flights, then click here:</h2>
 	<% if user_signed_in? %>
 		<!-- <a id="welcome-contest" class="button-standard-link">Access contests</a> -->
 		<%= link_to 'Access contests', user_path(current_user), class: "button-standard-link" %>

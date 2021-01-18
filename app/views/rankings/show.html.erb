@@ -1,7 +1,6 @@
 <div id="ranking_page"></div>
 <div class="intro-div-ranking">
-	<h3>The contest you don't want to win</h3>
-	<h3 class="title-ranking"><%= @ranking.name %> contest</h3>
+	<h2 class="title-style"><%= @ranking.name %> contest</h2>
 	
 	<% if user_signed_in? && @user_status == 1 %>
 		<p>Invite your friends to participate in this contest by just sending them this link and the identification code:</p>

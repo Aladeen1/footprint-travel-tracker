@@ -8,7 +8,6 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
-    "algoliasearch": "^4.6.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "instantsearch.css": "^7.4.5",
