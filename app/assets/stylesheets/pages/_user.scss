@@ -125,3 +125,80 @@ h2 {
         transform: rotate(0deg);
     }
 }
+
+
+
+.suggestion__box {
+    margin-top: 30px;
+    text-align: center;
+    width: 730px;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: $orange;
+    color: white;
+
+    h3 {
+        font-weight: 600;
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        margin-bottom: 0rem;
+        margin-top: 1rem;
+        font-weight: 300;
+        font-size: 0.9rem;
+    }
+}
+
+
+.suggestion__box__input {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+        position: relative;
+    }
+
+    input[type=text] {
+        width: 250px;
+        font-size: 16px;
+        font-weight: 300;
+        padding: 10px 15px;
+        border-radius: 6px;
+        border: solid 2px $light-gray;
+        outline: none;
+        color: $text-color;
+
+        &:focus {
+            border: solid 2px $light-blue;
+            transition: border 0.2s;
+        }
+    }
+
+    input[type=submit] {
+        position: absolute;
+        bottom: 0px;
+        right: -7rem;
+        width: 6rem;
+    }
+}
+
+.button-suggestion {
+    background-color: $purple;
+
+    &:hover {
+        background-color: lighten($purple, 10%);
+    }
+}
+
+
+
+
+
+
+
+
+

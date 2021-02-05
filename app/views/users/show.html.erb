@@ -3,22 +3,39 @@
 <h2 class="title-style my-4">Welcome to your profile</h2>
 <div class="main-div-user">
 
-	<div class="bg-white border border-white m-0 py-2 h-100" style="border-radius: 10px;">
-		<ul class="listes-trajets user-profile border border-white m-0" style="border-radius: 10px;">
-			<li><%= @carbon.round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
-			<li><%= @distance %>km</li>
-			<li><button data-toggle="collapse" data-target="#collapseMap" aria-expanded="true" id="dropdownBtn" class="button-dropdown-orange"  ><i id="collapseIcon" class="fas fa-arrow-down fa-arrow-down-animated"></i></button></li>
-		</ul>
+	<div>
+		<div class="bg-white border border-white m-0 py-2" style="border-radius: 10px;">
+			<ul class="listes-trajets user-profile border border-white m-0" style="border-radius: 10px;">
+				<li><%= @carbon.round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
+				<li><%= @distance %>km</li>
+				<li><button data-toggle="collapse" data-target="#collapseMap" aria-expanded="true" id="dropdownBtn" class="button-dropdown-orange"  ><i id="collapseIcon" class="fas fa-arrow-down fa-arrow-down-animated"></i></button></li>
+			</ul>
 
-			
-		<div class="collapse show p-4" id="collapseMap">
-			<div id="chartdiv" style="height:400px; !important"></div>	
+				
+			<div class="collapse show p-4" id="collapseMap">
+				<div id="chartdiv" style="height:400px; !important"></div>	
+			</div>
+		</div>
+
+		
+		<div class="suggestion__box">
+			<h3>“Traveling is not the problem, we need to invent new ways to travel and live adventure.”</h3>
+			<%= simple_form_for @user_suggestion, method: :patch do |f| %>
+				<div class="suggestion__box__input">
+					
+						<%= f.label :suggestion, 'Help us by suggesting companies who do just that:' %>
+						<div>
+							<%= f.text_field :suggestion %>
+							<%= f.button :submit, "Send", class: "button-standard button-suggestion" %>
+						</div>
+			  	</div>
+			<% end %>
+			<p>Ps: There can be many advantages in travelling more responsibly: cheaper, more authentic, more adventure ... more fun?</p>
 		</div>
 	</div>
 
-
-
 	<input id="flights" type="hidden" data-travels='<%= @airports.to_json.html_safe %>'>
+	
 
 
 	<div class="div-user-user-action">
@@ -56,4 +73,5 @@
 		</div>
 	</div>
 </div>
+
 
