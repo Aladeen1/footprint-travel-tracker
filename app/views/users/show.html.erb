@@ -23,7 +23,7 @@
 			<%= simple_form_for @user_suggestion, method: :patch do |f| %>
 				<div class="suggestion__box__input">
 					
-						<%= f.label :suggestion, 'Help us by suggesting companies who do just that:' %>
+						<%= f.label :suggestion, 'Help us by suggesting initiatives who do just that:' %>
 						<div>
 							<%= f.text_field :suggestion %>
 							<%= f.button :submit, "Send", class: "button-standard button-suggestion" %>

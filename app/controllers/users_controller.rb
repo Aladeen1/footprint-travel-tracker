@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 		@flights.each do |flight|
 			if flight.repetition != nil && flight.repetition != 0 
 				@distance += (flight.distance.to_i * flight.repetition.to_i)
-				@carbon += (((flight.distance.to_f * flight.repetition.to_f) * 235) / 1000000)
+				@carbon += (((flight.distance.to_f * flight.repetition.to_f) * 230) / 1000000)
 			end
 		end
 

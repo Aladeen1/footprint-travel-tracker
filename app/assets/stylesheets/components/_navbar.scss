@@ -55,8 +55,31 @@
     font-style: italic;
 }
 
+.about-us-target {
+  &:hover {
+    cursor: pointer;
+    color: $orange;
+  }
+}
 
+.modal-about-us {
+  h5 {
+    text-align: center;
+  }
 
+  h4 {
+    text-align: center;
+  }
+
+  p {
+    line-height: 160%;
+    margin: 20px 0px;
+  }
+}
+
+.nav-link {
+  color: black !important;
+}
 
 
 

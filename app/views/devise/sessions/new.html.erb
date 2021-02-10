@@ -1,5 +1,6 @@
 <div class="devise__interface__container">
-    <p><%= link_to "Sign up", new_registration_path(resource_name) %> if you don't have an account yet</p>
+    <!-- <p>Register an account will allow you to add your flights, see your footprint and map as well as join contests with your peers</p> -->
+    <p>Please <%= link_to "Sign up", new_registration_path(resource_name) %> if you don't have an account yet</p>
     <h2>Login</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,4 +25,7 @@
       <%= render "devise/shared/links" %>
     </div>
 </div>
-
+<p style="text-align:center;">Your privacy is important to us.</br>
+  Your information will be kept confidential and they will not be sold to 3rd parties.</br>
+  Thanks to the verification code, only people within your contest will be able to see your footprint and flights.
+</p>

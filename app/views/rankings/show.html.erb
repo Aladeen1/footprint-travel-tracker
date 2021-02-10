@@ -32,7 +32,7 @@
 							<%= index + 1 %>
 						</li>
 						<li><%= user.name %></li>
-						<li><%= ((user.total_distance.to_f * 235) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
+						<li><%= ((user.total_distance.to_f * 230) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
 						<li><%= user.total_distance %>km</li>
 						<li><i class="fas fa-user-circle styling-icon"></i></li>
 					</ul>
@@ -68,10 +68,10 @@
 			<% end %>
 			</div>
 
-			<div data-toggle="collapse" data-target="#collapseAllContests" aria-expanded="true"  class="title-menu">
+			<div data-toggle="collapse" data-target="#collapseAllContestsRanking" aria-expanded="true"  class="title-menu">
 				<p>Find contests (<%= @rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
 			</div>
-			<div id="collapseAllContests">
+			<div id="collapseAllContestsRanking">
 			<% @rankings.each do |ranking| %>
 				<%= link_to ranking_path(ranking.id) do %>
 				<i class="fas fa-crown"></i> <%= ranking.name %></br>

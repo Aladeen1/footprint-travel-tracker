@@ -1,6 +1,37 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="about-us-dropdown">
-    <p>About us</p>
+    <!-- Button trigger modal -->
+    <p class="about-us-target" data-toggle="modal" data-target="#exampleModalCenter">
+      About us
+    </p>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-about-us" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">About CarbonContest</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4>CarbonContest aims at sensibilizing people about their air footprint and sustainable tourism in a fun way.</h4>
+            <p> The calculation of carbon footprints are made in Co2-equivalent using the <%= link_to 'data', 'https://datagir.ademe.fr/' %> of the environmental agency in France(Ademe Ecolab). Accordingly the base for calculation is 230g/Co2-e/km since it takes into account radiative forcing.</p>
+
+            <p>As a reminder it is estimated based on the <%= link_to 'carbon budget', 'https://www.ipcc.ch/sr15/chapter/chapter-2/' %> established by the IPCC report from 2018 and the <%= link_to 'world population data', 'https://www.worldometers.info/' %> that we have an individual limit of 2 to 3tons/Co2-e/year if we aim for carbon neutrality by 2050 or earlier.</p>
+            <p>
+            On another note, the earth has a <%= link_to "circumference of about 40 075km", "https://www.space.com/17638-how-big-is-earth.html" %>, therefore you can know how many times you went around the world.</p>
+    
+            <p>More features and interactive data will be provided in the future on this site, we hope you enjoyed your experience so far :)</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
