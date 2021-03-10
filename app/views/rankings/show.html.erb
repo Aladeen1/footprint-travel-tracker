@@ -31,7 +31,7 @@
 							<% end %>
 							<%= index + 1 %>
 						</li>
-						<li><%= user.name %></li>
+						<li class="listes-trajets-name"><%= user.name %></li>
 						<li><%= ((user.total_distance.to_f * 230) / 1000000).round(1) %>t <%= image_tag("Co2_icon.png", width: 35) %></li>
 						<!-- <li><%= user.total_distance %>km</li> -->
 						<li><%= (user.total_distance / 40075.0).round(1)%>x  <%= image_tag("around_logo.jpg", width: 45) %></li>
