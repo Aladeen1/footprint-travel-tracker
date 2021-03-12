@@ -43,13 +43,14 @@
 
 		<p class="menu">Menu</p>
 
-
-		<%= link_to new_flight_path do %>
-		<i class="fas fa-plane"></i>   Add flights to my profile
-		<% end %></br>
-		<%= link_to new_ranking_path do %>
-		<i class="fas fa-plus-square"></i>   Create new contest
-		<% end %></br>
+		<div>
+			<%= link_to new_flight_path do %>
+			<i class="fas fa-plane"></i>   Add flights to my profile
+			<% end %></br>
+			<%= link_to new_ranking_path do %>
+			<i class="fas fa-plus-square"></i>   Create new contest
+			<% end %></br>
+		</div>
 		
 		<div data-toggle="collapse" data-target="#collapseMyContests" aria-expanded="true"  class="title-menu">
 			<p>My contests (<%= @user.rankings.count %>)</p><i class="fas fa-arrow-down"></i> 
